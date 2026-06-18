@@ -70,3 +70,24 @@ function AverageRate(rate) {
     `;
 }
 
+function render() {
+    const app = document.getElementById('app');
+    if (!app) {
+        console.error('Could not find element with id "app"');
+        return;
+    }
+
+    app.innerHTML = `
+        <div class="app-container">
+            <h1>Freelancer Forum</h1>
+
+            ${AverageRate(averageRate)}
+
+            <h2>Available Freelancers <span class="count">(${freelancers.length})</span></h2>
+
+            ${Freelancers(freelancers)}
+        </div>
+    `;
+}
+//Mount the application onto the document
+render();
