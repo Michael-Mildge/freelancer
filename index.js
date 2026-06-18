@@ -10,6 +10,7 @@ const NAMES = ["Alice", "Bob", "Carol", "Dave", "Eve"];
 const OCCUPATIONS = ["Writer", "Teacher", "Programmer", "Designer", "Engineer"];
 const PRICE_RANGE = { min: 20, max: 200 };
 const NUM_FREELANCERS = 100;
+
 function createFreelancer() {
   const randomName = NAMES[Math.floor(Math.random() * NAMES.length)];
   const randomOccupation =
@@ -20,7 +21,33 @@ function createFreelancer() {
     ) + PRICE_RANGE.min;
   return { name: randomName, occupation: randomOccupation, rate: randomRate };
 }
+
 let freelancers = [];
 for (let i = 0; i < NUM_FREELANCERS; i++) {
   freelancers.push(createFreelancer());
+}
+// console.log(freelancers);
+
+function getAverageRate(freelancersArray) {
+    if (!freelancersArray || freelancersArray.length === 0) {
+        return 0;
+    }
+    let total = 0;
+    for (let i = 0; i < freelancersArray.length; i++) {
+        total += freelancersArray[i].rate;
+    }
+    return total / freelancersArray.length;
+}
+
+let averageRate = getAverageRate(freelancers);
+// console.log(`Average rate: $${averageRate.toFixed(2)}`);
+
+function Freelancer(freelancer) {
+    return `
+        <div class="freelancer-card">
+            <div class="freelancer__name">${freelancer.name}</div>
+            <div class="freelancer__occupation">${freelancer.occupation}</div>
+            <div class="freelancer__rate">${freelancer.rate}</div>
+        </div>
+    `;
 }
