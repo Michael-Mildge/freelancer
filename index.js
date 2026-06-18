@@ -51,3 +51,22 @@ function Freelancer(freelancer) {
         </div>
     `;
 }
+
+function Freelancers(freelancersList) {
+    const itemsHTML = freelancersList.map(Freelancer).join('');
+    return `
+        <div class="freelancers">
+            ${itemsHTML}
+        </div>
+    `;
+}
+
+function AverageRate(rate) {
+    return `
+        <div class="average-rate">
+            <h3>Average Rate</h3>
+            <p class="average-rate__value">$${rate.toFixed(2)}</p>
+        </div>
+    `;
+}
+
